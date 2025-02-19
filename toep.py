@@ -11,8 +11,8 @@ matrix[:, 0] = first_column
 for i in range(1, cols):
     matrix[:, i] = matrix[:, i-1] - 1
 
-print(matrix)
-print("-" * 30)
+# print(matrix)
+# print("-" * 30)
 
 np.save('matrix.npy', matrix)
 print("Матрица сохранена в matrix.npy")
