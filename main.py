@@ -7,12 +7,11 @@ def heads_or_tails():
 
 result = heads_or_tails()
 
-def importer():
+def importer(result):
     if result == "heads":
         import rando
     else:
         import toep
     import recognizer
 
-importer()
-
+print(importer(result))

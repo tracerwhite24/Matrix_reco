@@ -1,18 +1,35 @@
 import numpy as np
 
-rows = 8
-cols = 8
+class Matrix:
+    def __init__(self, low, high, row, coil):
+        self.name = 'matrix.npy'
+        self.low = low
+        self.high = high
+        self.row = row
+        self.coil = coil
 
-matrix = np.zeros((rows, cols), dtype=int)
+    def create_matrix(self):
+        matrix = np.zeros((self.row, self.coil), dtype=int)
+        return matrix
 
-first_column = np.arange(5, 5 + rows)
-matrix[:, 0] = first_column
+    def fill_matrix(self):
+        matrix = self.create_matrix()
+        first_column = np.arange(5, 5 + self.row)
+        matrix[:, 0] = first_column
+        for i in range(1, self.coil):
+            matrix[:, i] = matrix[:, i - 1] - 1
+        return matrix
 
-for i in range(1, cols):
-    matrix[:, i] = matrix[:, i-1] - 1
+    def save_matrix(self):
+        matrix_to_save = self.fill_matrix()
+        np.save(self.name, matrix_to_save)
+        print("Матрица сохранена в matrix.npy")
 
-# print(matrix)
-# print("-" * 30)
+    def get_matrix(self):
+        return np.load(self.name)
 
-np.save('matrix.npy', matrix)
-print("Матрица сохранена в matrix.npy")
+
+M = Matrix(1,9, 8,8)
+M.save_matrix()
+print("-" * 30)
+print(M.get_matrix())
