@@ -28,7 +28,6 @@ class Matrix:
     def get_matrix(self):
         return np.load(self.name)
 
-
 M = Matrix(1,9, 8,8)
 M.save_matrix()
 print("-" * 30)
