@@ -25,6 +25,5 @@ def reco():
 
     return True
 
-print(matrix)
 print("-" * 30)
 print(reco())
